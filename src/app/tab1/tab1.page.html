@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tasks
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="bottom-buttons">
+    <button ion-button (click)="addTask()">Add Task</button>
+  </div>
+  <ion-list>
+    <ion-item *ngFor="let task of taskList; let i = index">
+      <ion-label>{{ task.name }} - {{ task.numVideos }} - {{ task.taskDate }}</ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="updateTask(i)">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="deleteTask(i)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Add Task
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Task Name:</ion-label>
+        <ion-input type="text" [(ngModel)]="taskName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Number of Videos:</ion-label>
+        <ion-input type="number" [(ngModel)]="numVideos"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date:</ion-label>
+        <ion-input type="date" [(ngModel)]="taskDate"></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="addTask()">Add Task</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
